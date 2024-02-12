@@ -1,0 +1,15 @@
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.csproj.AssemblyReference.cache
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.AssemblyInfoInputs.cache
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.AssemblyInfo.cs
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.csproj.CoreCompileInputs.cache
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\bin\Debug\net6.0\CustomORM.exe
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\bin\Debug\net6.0\CustomORM.deps.json
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\bin\Debug\net6.0\CustomORM.runtimeconfig.json
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\bin\Debug\net6.0\CustomORM.dll
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\bin\Debug\net6.0\CustomORM.pdb
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.dll
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\refint\CustomORM.dll
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.pdb
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\CustomORM.genruntimeconfig.cache
+C:\Users\jaafa\RiderProjects\CustomORM\CustomORM\obj\Debug\net6.0\ref\CustomORM.dll
