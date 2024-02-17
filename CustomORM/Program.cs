@@ -16,4 +16,16 @@ using CustomORM.ORM;
 
 DbContext context = new DbContext();
 context.CreateDatabase();
+//context.CreateTables();
+
+DbSet<Item> Items = new DbSet<Item>();
+Item item = new Item("Item", 99);
+//Items.Add(item);
+foreach (var iteme in Items.Get())
+{
+    iteme.Name = "Item2";
+    iteme.Price = 00;
+    Items.Delete(iteme);
+}
+
 

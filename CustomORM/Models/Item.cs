@@ -12,4 +12,9 @@ public class Item
         Name = name;
         Price = price;
     }
+
+    public Item()
+    {
+        
+    }
 }

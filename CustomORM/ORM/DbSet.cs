@@ -28,7 +28,7 @@ public class DbSet<T> : List<T>
             {
                 if (x.GetValue(entity) != null)
                 {
-                    if (x.GetValue(entity).GetType() == typeof(string))
+                    if (x.GetValue(entity).GetType() == typeof(string) || x.GetValue(entity).GetType() == typeof(Guid))
                     {
                         return $"'{x.GetValue(entity)}'";
                     }
@@ -41,14 +41,14 @@ public class DbSet<T> : List<T>
                 return null;
             }
             ));
-        string query = $"insert into {tableName} {columnsNames} values {columnsValues}";
+        string query = $"insert into {typeof(T).Name+"s"} ({columnsNames}) values ({columnsValues})";
         ExecuteNonQuery(query);
 
     }
 
     public List<T> Get()
     {
-        var tableName = nameof(T) + "s";
+        var tableName = typeof(T).Name + "s";
         return ExecuteQuery($"select * from {tableName}");
         // select * from tableName
     }
@@ -59,8 +59,24 @@ public class DbSet<T> : List<T>
         var tableName = nameof(T) + "s";
         var properties = typeof(T).GetProperties();
        var entityId = properties.Single(x => x.Name == "Id").GetValue(entity);
-        string columnsNamesAndValues = string.Join(',', properties.Select(x => $"{x.Name}={x.GetValue(entity)}"));
-        ExecuteNonQuery($"UPDATE  {tableName} {columnsNamesAndValues} WHERE id={entityId}");
+        string columnsNamesAndValues = string.Join(',', properties.Select(x =>
+        {
+            if (x.GetValue(entity) != null)
+            {
+                if (x.GetValue(entity).GetType() == typeof(string) || x.GetValue(entity).GetType() == typeof(Guid))
+                {
+                    return $"{x.Name}='{x.GetValue(entity)}'";
+                }
+                else
+                {
+                    return $"{x.Name}={x.GetValue(entity)}";
+                }
+                    
+            }
+            return null;
+            
+        }));
+        ExecuteNonQuery($"UPDATE  {typeof(T).Name+"s"} SET {columnsNamesAndValues} WHERE id='{entityId}'");
         
         // TODO: Update single or multiple column 
 
@@ -71,7 +87,7 @@ public class DbSet<T> : List<T>
         var tableName = nameof(T) + "s";
         var properties = typeof(T).GetProperties();
         var entityId = properties.Single(x => x.Name == "Id").GetValue(entity);
-        ExecuteNonQuery($"DELETE FROM {tableName} WHERE id={entityId}");
+        ExecuteNonQuery($"DELETE FROM {typeof(T).Name+"s"} WHERE id='{entityId}'");
 
     }
     public void ExecuteNonQuery(string query)
@@ -94,7 +110,7 @@ public class DbSet<T> : List<T>
             using (var sqlConnection = new SqlConnection(ConnectionString.MyConnectionString))
             {
                 
-                
+                sqlConnection.Open();
                 var sqlCommand = new SqlCommand(query, sqlConnection);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
@@ -109,7 +125,7 @@ public class DbSet<T> : List<T>
 
                 }
                 
-
+                sqlConnection.Close();
             }
 
             return rows;
